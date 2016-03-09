@@ -7,5 +7,7 @@
     <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/practica1</property>
     <property name="hibernate.connection.username">chepe</property>
     <property name="hibernate.connection.password">contraseña</property>
+    <mapping resource="model/Pais.hbm.xml"/>
+    <mapping resource="model/Usuario.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
