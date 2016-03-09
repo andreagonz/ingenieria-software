@@ -8,5 +8,5 @@ CREATE TABLE usuario(
 
 CREATE TABLE pais(
        id INTEGER PRIMARY KEY,
-       nombre VARCHAR(64)
+       nombre VARCHAR(64) NOT NULL
 );
