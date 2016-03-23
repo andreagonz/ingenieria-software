@@ -8,6 +8,6 @@
 Usuarios con los que se puede iniciar sesión:
 - Nombre: chepe
   Contraseña: chepe123
-- Nombre: pachi
-  Contraseña: pachi123
+- Nombre: pacha
+  Contraseña: pacha123
 ```
