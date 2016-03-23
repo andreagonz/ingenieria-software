@@ -4,8 +4,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-import org.apache.commons.codec.digest.DigestUtils;
-
 import dao.UsuarioDAO;
 import model.Usuario;
 
@@ -13,59 +11,52 @@ import model.Usuario;
 @SessionScoped
 public class UsuarioBean {
 
-	private Usuario usuario = new Usuario();
+    private Usuario usuario = new Usuario();
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
+    public Usuario getUsuario() {
+        return usuario;
+    }
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
-	public String verificarDatos() throws Exception {
-		UsuarioDAO usuDAO = new UsuarioDAO();
-		Usuario us;
-		String resultado;
+    public String verificarDatos() throws Exception {
+        UsuarioDAO usuDAO = new UsuarioDAO();
+        Usuario us;
+        String resultado;
 
-		try {
-			// Enviando la encriptacion
-			//String encript = DigestUtils.md5Hex(this.usuario.getNombre());
-			String encript = DigestUtils.sha1Hex(this.usuario.getContrasenia());
-			this.usuario.setContrasenia(encript);
+        try {
+            us = usuDAO.verificarDatos(this.usuario);
+            if (us != null) {
+                FacesContext.getCurrentInstance().getExternalContext()
+                        .getSessionMap().put("usuario", us);
+                resultado = "exito";
+            } else {
+                resultado = "error";
+            }
+        } catch (Exception e) {
+            throw e;
+        }
 
-			us = usuDAO.verificarDatos(this.usuario);
-			if (us != null) {
+        return resultado;
+    }
 
-				FacesContext.getCurrentInstance().getExternalContext()
-						.getSessionMap().put("usuario", us);
-				resultado = "exito";
-			} else {
-				resultado = "error";
-			}
-		} catch (Exception e) {
-			throw e;
-		}
+    public boolean verificarSesion() {
+        boolean estado;
+        if (FacesContext.getCurrentInstance().getExternalContext()
+                .getSessionMap().get("usuario") == null) {
+            estado = false;
+        } else {
+            estado = true;
+        }
 
-		return resultado;
-	}
+        return estado;
+    }
 
-	public boolean verificarSesion() {
-		boolean estado;
-
-		if (FacesContext.getCurrentInstance().getExternalContext()
-				.getSessionMap().get("usuario") == null) {
-			estado = false;
-		} else {
-			estado = true;
-		}
-
-		return estado;
-	}
-
-	public String cerrarSesion() {
-		FacesContext.getCurrentInstance().getExternalContext()
-				.invalidateSession();
-		return "index";
-	}
+    public String cerrarSesion() {
+        FacesContext.getCurrentInstance().getExternalContext()
+                .invalidateSession();
+        return "index";
+    }
 }

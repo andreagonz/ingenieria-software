@@ -24,7 +24,7 @@ public class HibernateUtil {
             // Create the SessionFactory from standard (hibernate.cfg.xml) 
             // config file. Si el cfg.xml esta en la raiz (default-package), el configure seria "()"
 			sessionFactory = new AnnotationConfiguration().configure(
-					"java/xml/hibernate.cfg.xml")
+					"xml/hibernate.cfg.xml")
 					.buildSessionFactory();
         } catch (Throwable ex) {            
             System.err.println("Initial SessionFactory creation failed." + ex);

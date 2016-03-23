@@ -6,7 +6,7 @@
     <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
     <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/practica2</property>
     <property name="hibernate.connection.username">chepe</property>
-    <property name="hibernate.connection.password">contrasenia</property>
+    <property name="hibernate.connection.password">chpapiermotu13**</property>
     <mapping resource="xml/Usuario.hbm.xml"/>
     <mapping resource="xml/Pais.hbm.xml"/>
   </session-factory>
