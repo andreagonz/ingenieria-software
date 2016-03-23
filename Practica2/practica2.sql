@@ -11,3 +11,6 @@ CREATE TABLE usuario(
        idpais INTEGER REFERENCES pais(id) NOT NULL
  );
 
+INSERT INTO pais VALUES(1,'mexico');
+INSERT INTO usuario VALUES(1,'chepe','chepe@gmail.com','chepe123',1);  
+INSERT INTO usuario VALUES(2,'pacha','pacha@gmail.com','pacha123',1);
