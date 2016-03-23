@@ -31,7 +31,7 @@ public class UsuarioBean {
             if (us != null) {
                 FacesContext.getCurrentInstance().getExternalContext()
                         .getSessionMap().put("usuario", us);
-                resultado = "exito";
+                resultado = "inicio";
             } else {
                 resultado = "error";
             }

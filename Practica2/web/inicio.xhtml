@@ -9,7 +9,7 @@
 	<h:outputLabel value="No ha iniciado sesión" rendered="#{usuarioBean.verificarSesion() eq false}" />
 	<h:form rendered="#{usuarioBean.verificarSesion()}">			
 		<h:panelGrid columns="2">
-			<h3>Iniciaste sesión como el usuario: </h3>
+			<p>Iniciaste sesión como el usuario: </p>
 
 			<h:outputLabel value="#{usuarioBean.usuario.nombre}" />
                         <br/>
@@ -17,5 +17,6 @@
 				action="#{usuarioBean.cerrarSesion()}" />
 		</h:panelGrid>
 	</h:form>
+        <h:button value="Otra página" outcome="otro" />
 </body>
 </html>
